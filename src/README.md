@@ -51,9 +51,9 @@ Installation, Configuration, and Execution
 Simply copy the files in this folder to your installation directory. The target
 directory should be readable by the executing user. For security concerns, my
 suggestion is to make the configuration files be only readable by the executing
-user. The executing user should has the permissin to access GPIO, SPI, and serial
+user. The executing user should has the permissions to access GPIO, SPI, and serial
 ports for communicating with the hardware components. Please note that the serial
-camera access the serial port, you need to disable serial TTY while leaving the
+camera accesses the serial port, you need to disable the serial TTY while leaving the
 serial support enabled.
 
 If you execute the program as the default user (pi) on the Raspberry Pi, the
