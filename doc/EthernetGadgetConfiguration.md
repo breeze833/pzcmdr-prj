@@ -18,7 +18,9 @@ Then, if you can access the second partition:
 
 *   modify `etc/modules` to include `dwc2` and `g_ether` module
 *   create `etc/modprobe.d/gether.conf` and add the line
+
         options g_ether dev_addr=<dev_addr> host_addr=<host_addr>
+        
     *    where `dev_addr` is the MAC address on the Pi Zero interface (usb0)
          and `host_addr` is the MAC address on the host interface (interface name may vary)
     *    If the addresses are fixed, it is likely to get the same IP from DHCP.
@@ -26,9 +28,9 @@ Then, if you can access the second partition:
 If you cannot access the second partition, simply boot into the system and modify
 `/etc/modules` and `/etc/modprobe.d/g_ether.conf` accordingly.
 
-If there is no peripherals attached to Pi Zero, connect the gadget USB port to the host
-and the power from the gadget USB port is enough for booting the system. If the power is
-low,
+If there is no peripherals attached to Pi Zero, connecting the gadget USB port to the host
+would get enough power for booting the system. If the power is low,
+
 *    you may prepare an additional USB cable and connect the power port to a power adapter;
 *    or prepare a powered USB hub and connect the gadget port to the host via the hub.
 
@@ -101,6 +103,7 @@ On the host:
     *    enable on each boot by modifying `/etc/sysctl.conf`
          or one of the files in `/etc/sysctl.d`
 *   enable the firewall rule
+
         iptables -t nat -A POSTROUTING -s 10.1.1.100 -j MASQUERADE
 
 You may consider to hook the `iptables` command to the network configuration
