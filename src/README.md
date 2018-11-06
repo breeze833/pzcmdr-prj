@@ -1,14 +1,12 @@
-Tutorial Project: pzcmdr
-========================
+Source Code for pzcmdr
+======================
 
 The project name "pzcmdr" comes from "Pi Zero Commander".
 The project was initiated as a controlling device for waking up and shutting
 down all the PCs in our computer room by RFID cards. It has been evolved to
-include a serial camera and an LED for additional featues. The development
-process is protyping-based. Therefore, the architecture is improved for each
-version of prototype. Because this project is released as a tutorial, the
-prototypes are also included in the project folder but the documentation is
-minimal.
+include a serial camera and an LED for additional featues.
+The architecture is designed to be flexible to include new processing components.
+It may be adapted or ported to some other environment.
 
 
 Requirements
@@ -46,44 +44,6 @@ Requirements
 `scripts/` contains some helper scripts.
 
 Installation, Configuration, and Execution
-------------------------------------------
+==========================================
 
-Simply copy the files in this folder to your installation directory. The target
-directory should be readable by the executing user. For security concerns, my
-suggestion is to make the configuration files be only readable by the executing
-user. The executing user should has the permissions to access GPIO, SPI, and serial
-ports for communicating with the hardware components. Please note that the serial
-camera accesses the serial port, you need to disable the serial TTY while leaving the
-serial support enabled.
-
-If you execute the program as the default user (pi) on the Raspberry Pi, the
-application should just work by the command:
-
-    python3 main.py
-
-There are sample configurations in the `config/` directory. You may follow the
-sytax (described in the sample files) to setup your configuration files and
-start the application similar to this:
-
-    python3 main.py ./config/my_iddb.py ./config/my_cmds.py
-
-By default, the log level is INFO. You may specify the log level in the
-environment variable `PZCMDR_LOGLEVEL`. For example,
-
-    PZCMDR_LOGLEVEL=DEBUG python3 main.py
-
-Run-time Control
-----------------
-
-The application handles the signals for different purposes:
-
-*   `USR1` is used for reloading configuration files.
-*   `USR2` is used for toggling the saving of sensed ID, such as RFID's UID.
-*   `TERM` and `INT` are used for terminating the program.
-
-For example, supposed the PID of the program is 7130, you may reload the 
-configuration files by the command:
-
-    kill -USR1 7130
-
-
+Please refer to the `Setup.md` in the project `doc/` folder for deatils.
