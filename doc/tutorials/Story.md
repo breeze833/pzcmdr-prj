@@ -4,8 +4,8 @@ The Story
 We have a first-generation Raspberry Pi Zero (v1.2).
 It features the compact form factor and the very low power consumption.
 With only the basic Raspbian running, it can be powered up from the **PWR** port or the **USB** port.
-The **USB** port is not working in the popular **host mode**. Instead, it works in **gadget mode** which 
-indicates that it looks like an USB peripheral device.
+The **USB** port is working in the **gadget mode** instead of the popular **host mode**.
+In other words, Pi Zero apears as an USB peripheral device.
 Thus, we can configure Pi Zero to appear as various kinds of devices:
 serial, keyboard, mouse, ethernet, camera, storage, etc.
 If you configure it as an ethernet device, it will emulate the network link over the USB cable.
