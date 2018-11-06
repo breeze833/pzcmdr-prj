@@ -8,7 +8,7 @@ class RC522:
     The RFID frontend (RC522) that triggers the command execution when a card is ready.
     The UID will be sent with a signal "got_uid".
 
-    The signals "start_rfid_reader" and "stop_rfid_reader" are used
+    The signals "start" and "stop" are used
     for controlling the reader.
     """
 
@@ -18,8 +18,8 @@ class RC522:
         """
         self.need_leak_uid = False
         self.is_running = None
-        dispatcher.connect(self.start_reader, signal='start_rfid_reader')
-        dispatcher.connect(self.stop_reader, signal='stop_rfid_reader')
+        dispatcher.connect(self.start_reader, signal='start')
+        dispatcher.connect(self.stop_reader, signal='stop')
 
     async def read(self):
         logging.debug("waiting for tag...")

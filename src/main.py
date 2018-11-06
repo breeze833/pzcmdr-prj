@@ -86,8 +86,7 @@ def main(log_level=logging.INFO):
     rgb_led = RGB_LED()
     cmdexec = CmdExec(lookup_tables['commands'])
 
-    dispatcher.send("start_rfid_reader")
-    dispatcher.send("start_capture")
+    dispatcher.send("start")
 
     try:
         loop.run_forever()

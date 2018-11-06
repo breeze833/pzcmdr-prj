@@ -30,7 +30,7 @@ class VC0706:
     The class for controlling the serial camera VC0706 to capture images.
     The captured JPEG image will be sent with the signal "captured_image".
 
-    The "start_capture" and "stop_capture" are used for controlling the camera.
+    The "start" and "stop" are used for controlling the camera.
     """
     def __init__(self, port='/dev/ttyAMA0', baud=115200):
         self.port = port
@@ -41,8 +41,8 @@ class VC0706:
             logging.info('baudrate changed to {baudrate}'.format(baudrate=self.baud))
         else:
             logging.warning('baudrate change failed')
-        dispatcher.connect(self.start_capture, signal='start_capture')
-        dispatcher.connect(self.stop_capture, signal='stop_capture')
+        dispatcher.connect(self.start_capture, signal='start')
+        dispatcher.connect(self.stop_capture, signal='stop')
 
     def reset(self):
         """
