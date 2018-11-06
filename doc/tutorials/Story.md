@@ -3,7 +3,7 @@ The Story
 
 We have a first-generation Raspberry Pi Zero (v1.2).
 It features the compact form factor and the very low power consumption.
-With only the basic Raspbian running, ir can be powered up from the **PWR** port or the **USB** port.
+With only the basic Raspbian running, it can be powered up from the **PWR** port or the **USB** port.
 The **USB** port is not working in the popular **host mode**. Instead, it works in **gadget mode** which 
 indicates that it looks like an USB peripheral device.
 Thus, we can configure Pi Zero to appear as various kinds of devices:
