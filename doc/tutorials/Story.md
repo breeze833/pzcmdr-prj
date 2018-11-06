@@ -6,9 +6,9 @@ It features the compact form factor and the very low power consumption.
 With only the basic Raspbian running, it can be powered up from the **PWR** port or the **USB** port.
 The **USB** port is working in the **gadget mode** instead of the popular **host mode**.
 In other words, Pi Zero apears as an USB peripheral device.
-Thus, we can configure Pi Zero to appear as various kinds of devices:
-serial, keyboard, mouse, ethernet, camera, storage, etc.
-If you configure it as an ethernet device, it will emulate the network link over the USB cable.
+Thus, we can configure Pi Zero to be various kinds of devices:
+serial, keyboard, mouse, ethernet, video, storage, etc.
+If configured as an ethernet device, it emulates the network link over the USB cable.
 This establishes a connection between the host computer and Pi Zero.
 
 The gadget mode is interesting in that the Pi Zero could be a software-defined intelligent device.
@@ -16,7 +16,8 @@ However, v1.2 does not have builtin camera and network interface.
 For the sensing and controlling applications via GPIO, it does not distinguishes itself from Arduino-based solution.
 (Of course we know that it is application-dependent. Please don't argue at this point.)
 
-The Pi Zero had been rested in the box for a long time until we encounter the problem to solve.
+The Pi Zero had been rested in the box for a long time until we encounter the problem to solve....
+
 We have a computer room of 40 computers.
 Thanks the [DRBL](https://drbl.org) and the [epoptes](http://www.epoptes.org) for the utilities, we can manage the computers with a few simple commands.
 However, we have the requests for issuing wakeup/shutdown commands without logging into the teacher's computer or the DRBL server.

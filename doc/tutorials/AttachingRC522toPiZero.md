@@ -1,6 +1,11 @@
 Attaching RC522 to Pi Zero and Sensing the Tags
 ===============================================
 
+The first prototype os to read RDIF tags from within the Raspbian system.
+
+Quick Start
+-----------
+
 The RC522 is popular in many RFID related projects.
 According to the [pi-rc522](https://github.com/ondryaso/pi-rc522), we connect our RC522 module to Pi Zero as follows:
 
@@ -24,5 +29,71 @@ or
 
 Copy the sample code, save it to a script file, and execute it to experiment with it.
 The result is encouraging because we make the RFID reader sensing tags with only a few lines of code.
-Then, we pressed `Ctrl-C` to terminate the program and restarted the program.
-We noticed some extra messages related to GPIO resources. Apparently the cleanup routine was not properly finished.
+Then, we pressed `Ctrl-C` to terminate the program.
+When restarting the program, we noticed some extra messages related to GPIO resources.
+Apparently the cleanup routine was not properly finished.
+We quickly wrapped the code in a `try` block and moved the `cleanup()` call to the `finally` block.
+This ensures that the cleanup routine would be properly executed.
+
+Logging
+-------
+
+During the development, we would like to monitor the UID sensed from the tag.
+We replaced the `print()` function calls with the `logging` facility because
+it is much more flexible to use. We can categorize messages with a *log level*.
+We can set a threashold level that turns off all the messages higher than that level.
+The output device is also configurable. All the configuration is done at the beginning of the main thread.
+
+Associate UID and Command
+-------------------------
+
+The development came to the point that modularization was needed.
+We defined the RFID related operations in one class and a general command execution mechanism in another.
+A dictionary was defined to map the sensed UID to the corresponding command name.
+Another dictionary was defined to map the command name to the command code.
+When a command is determined, we use `exec()` to execute the code.
+
+Efficiency Concerns
+-------------------
+
+The `exec()` function allows two types of input. The first one is a string of script; the second one
+is a pre-compiled Python code object.
+The former type requires script parsing each time we invoke `exec()`.
+The latter type is proper for executing the same command multiple times.
+To produce the pre-compiled code, use `compile()` like this:
+
+    precompiled_code = compile("the python script", '<string>', 'exec')
+
+Executing a Shell Command
+-------------------------
+
+If the command is a shell command, the `subprocess` module provides the functionality:
+
+    subprocess.Popen('the shell command', shell=True)
+
+We can combine the `compile()` and `subprocess` to produce a pre-compiled code for invoking shell command.
+For example,
+
+    precompiled_code = compile("""
+    import subprocess
+    p = subprocess.Popen('ls -l', shell=True)
+    """, '<string>', 'exec')
+
+Handling Child Process Termination
+----------------------------------
+
+Using the above approach to execute a shell command would leave a *zombie process* after the command is finished.
+This is due to the `Popen()` creates a child process for starting the shell (which is then executing the specified command).
+After a child process is finished, the process memory is released.
+However, the record in the process table is not cleared until the parent process reads the return status
+(think about the return value from main() function).
+
+Therefore, we need to handle the siganl `SIGCHLD`. The related functions are defined in the `signal` module.
+
+    signal.signal(signal.SIGCHLD, handling_function)
+
+We chose a simple appraoch to handle the signal: simply use `os.wait(0, 0)` to poll the processes once.
+
+    def handling_function():
+        os.wait(0,0)
+
