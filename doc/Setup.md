@@ -151,3 +151,10 @@ In the above procedure, we assume that the application is installed for the user
 The user is allowed to access GPIO, SPI and serial port.
 However, if the application is installed for another user account, please ensure that the required permissions
 to access the hardware and software are assigned to the user.
+
+Addition Setup
+==============
+
+If you would like to execute a command on a remote host, please refer to the [`EthernetGadgetConfiguration.md`](networking/EthernetGadgetConfiguration.md) 
+and [`SshLoginByKey.md`](networking/SshLoginByKey.md) to setup the network access.
+
