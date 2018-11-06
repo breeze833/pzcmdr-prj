@@ -141,6 +141,12 @@ After the application is started, we can send the following signals to the proce
 *   `USR2` is used for toggling the saving of sensed ID, such as RFID's UID.
 *   `TERM` and `INT` are used for terminating the program.
 
+For example, supposed the PID of the program is 7130, you may reload the 
+configuration files by the command:
+
+    kill -USR1 7130
+
+
 In the above procedure, we assume that the application is installed for the user `pi`.
 The user is allowed to access GPIO, SPI and serial port.
 However, if the application is installed for another user account, please ensure that the required permissions
