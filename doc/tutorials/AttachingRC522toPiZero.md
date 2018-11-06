@@ -25,6 +25,7 @@ Installing the package is easy by
     pip install pi-rc522 (for Python 2)
 
 or
+
     pip3 install pi-rc522 (for Python 3)
 
 Copy the sample code, save it to a script file, and execute it to see the reader working.
