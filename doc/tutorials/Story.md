@@ -35,4 +35,6 @@ We choose Pi Zero to implement the smart device because of the following reasons
 
 And, the most important reason is that *we would like to make our Pi Zero contribute to a project*.
 
+----
+
 ![Raspberry Pi Zero (v1.2)](images/pi_zero.jpg)
