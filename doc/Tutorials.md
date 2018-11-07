@@ -7,3 +7,5 @@ The prototypes are kept as the learning material, including the Python related t
 [Part 00](tutorials/Story.md) - The Story
 
 [Part 01](tutorials/AttachingRC522toPiZero.md) - Attaching RC522 to Pi Zero and Sensing the Tags
+
+[Part 02](tutorials/MakingItAsynchronous.md)
