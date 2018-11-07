@@ -158,3 +158,5 @@ Addition Setup
 If you would like to execute a command on a remote host, please refer to the [`EthernetGadgetConfiguration.md`](networking/EthernetGadgetConfiguration.md) 
 and [`SshLoginByKey.md`](networking/SshLoginByKey.md) to setup the network access.
 
+![pzcmdr](tutorials/images/pzcmdr.jpg)
+

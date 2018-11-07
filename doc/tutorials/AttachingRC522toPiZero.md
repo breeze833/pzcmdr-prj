@@ -168,3 +168,5 @@ This is the first prototype. We started from the pi-rc522 sample code and increm
 * The configurations are reloaded when receiving `SIGUSR1`.
 * The UID information is not included in the log messages.
 * To save the UID information to a owner-only file, send `SIGUSR2` to the process.
+
+![RC522 Reader](images/rc522.jpg)
