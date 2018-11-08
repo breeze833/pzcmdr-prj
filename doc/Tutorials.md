@@ -11,3 +11,6 @@ The prototypes are kept as the learning material, including the Python related t
 [Part 02](tutorials/MakingItAsynchronous.md) - Making It Asynchronous
 
 [Part 03](tutorials/UsingPubSubPattern.md) - Using Publisher-Subscriber Pattern
+
+[Part 04](tutorials/AttachingSerialCamera.md) - Attaching the Serial Camera to Read QR-Code
+
