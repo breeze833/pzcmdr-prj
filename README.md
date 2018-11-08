@@ -25,5 +25,5 @@ Project Organization
 ----
 |       |      |
 |:-----:|:-----|
-|[<img src="http://img.youtube.com/vi/wD7U9Itsjf0/0.jpg" width="160" height="90" alt="pzcmdr demo">](http://www.youtube.com/watch?v=wD7U9Itsjf0 "Short Demonstration of this Project") | Short Demonstration of this Project|
-|[<img src="http://img.youtube.com/vi/OaOHwIhl_y0/0.jpg" width="160" height="90" alt="project intro">](http://www.youtube.com/watch?v=OaOHwIhl_y0 "Introduction of the Project") | Introduction of the Project|
+|[<img src="http://img.youtube.com/vi/wD7U9Itsjf0/0.jpg" width="160" height="120" alt="pzcmdr demo">](http://www.youtube.com/watch?v=wD7U9Itsjf0 "Short Demonstration of this Project") | Short Demonstration of this Project|
+|[<img src="http://img.youtube.com/vi/OaOHwIhl_y0/0.jpg" width="160" height="120" alt="project intro">](http://www.youtube.com/watch?v=OaOHwIhl_y0 "Introduction of the Project") | Introduction of the Project|
