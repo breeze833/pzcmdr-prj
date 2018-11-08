@@ -25,3 +25,5 @@ Project Organization
 ----
 
 [![pzcmdr demo](http://img.youtube.com/vi/wD7U9Itsjf0/0.jpg)](http://www.youtube.com/watch?v=wD7U9Itsjf0 "Short Demonstration of this Project")
+
+[![project intro](http://img.youtube.com/vi/OaOHwIhl_y0/0.jpg)](http://www.youtube.com/watch?v=OaOHwIhl_y0 "Introduction of the Project")
