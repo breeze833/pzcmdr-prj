@@ -44,7 +44,7 @@ RC522 Pin | Pi Zero Pin
   R      | 11
   G      | 13
   B      | 15
-  \-      | 14
+  \-      | 14 (GND)
   
 
 System Configuration
