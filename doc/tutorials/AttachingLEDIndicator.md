@@ -63,3 +63,8 @@ Summary
 
 This is a quick prototyping evolution for improving the user-interface.
 It requires the basic knowledge about GPIO control and LED pins.
+
+----
+
+![RGB LED](images/rgb_led.jpg)
+

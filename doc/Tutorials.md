@@ -16,3 +16,5 @@ The prototypes are kept as the learning material, including the Python related t
 
 [Part 05](tutorials/AttachingLEDIndicator.md) - Attaching the LED Indicator
 
+[Part 06](tutorials/ReviewingCode.md) - Reviewing the Code
+
