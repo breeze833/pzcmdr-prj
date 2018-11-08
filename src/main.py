@@ -9,7 +9,7 @@ from cmdr import VC0706
 from cmdr import UID2Cmd
 from cmdr import QRCode2Cmd
 from cmdr import UIDLogger
-from cmdr import ImageScanner
+from cmdr import JPEG2Image, Image2Gray, QRCodeScanner
 from cmdr import RGB_LED
 from cmdr import CmdExec
 
