@@ -99,7 +99,7 @@ Put Them Together
 The major processing procedures were determined.
 To put them together, some additional efforts were required.
 
-* Defining the software siganls for `PyDispatcher`.
+* Define the software siganls for `PyDispatcher`.
 * Periodically capture an image - put the capturing procedure in a loop.
 * Decode the captured JPEG stream - wrap the JPEG data as an input stream by `io.BytesIO()`;  use `Image.open()` to decode the input stream.
 * Extract the decoded message and look for the corresponding command name - define the lookup dictionary for QR-Codes.
