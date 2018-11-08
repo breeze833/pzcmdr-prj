@@ -82,7 +82,9 @@ def main(log_level=logging.INFO):
     uid2cmd = UID2Cmd(lookup_tables['uids'])
     qrcode2cmd = QRCode2Cmd(lookup_tables['qrcodes'])
     uid_logger = UIDLogger()
-    image_scanner = ImageScanner()
+    jpeg2image = JPEG2Imge()
+    image2gray = Image2Gray()
+    qrcode_scanner = QRCodeScanner()
     rgb_led = RGB_LED()
     cmdexec = CmdExec(lookup_tables['commands'])
 
