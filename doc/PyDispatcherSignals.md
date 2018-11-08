@@ -5,7 +5,7 @@ The Defined PyDispatcher Signals Used in pzcmdr
 |:-------|:--------|:-------|:---------|
 |`start`| Start the entry servcie components | the main thread | RC522, VC0706 |
 |`stop`| Stop the service components | currently no sender | RC522, VC0706 |
-|`captured_image`| An image is captured | VC0706 | ImageScanner |
+|`captured_jpeg`| A JPEG image is captured | VC0706 | ImageScanner |
 |`got_uid`| An UID is sensed | RC522 | LED, UID2Cmd, UIDLogger |
 |`got_qrcode`| A QR-Code is scanned | ImageScanner | LED, QRCode2Cmd  |
 |`got_cmd`| A command is determined | QRCode2Cmd, UID2Cmd | CmdExec, RGB_LED |

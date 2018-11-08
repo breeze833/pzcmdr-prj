@@ -16,7 +16,7 @@ class ImageScanner:
     """
     def __init__(self):
         self.scanner = zbar.Scanner()
-        dispatcher.connect(self.scan, signal='captured_image')
+        dispatcher.connect(self.scan, signal='captured_jpeg')
 
     async def _scan(self, img_data):
         """

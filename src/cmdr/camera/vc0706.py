@@ -147,7 +147,7 @@ class VC0706:
                     data_len = await self.get_buffer_len()
                     if data_len>0:
                         data = await self.read_buffer_data(0, data_len)
-                        dispatcher.send('captured_image', self, data)
+                        dispatcher.send('captured_jpeg', self, data)
                 is_resumed = await self.resume()
                 while not is_resumed:
                     logging.warning('resuming camera failed')
