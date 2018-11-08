@@ -14,3 +14,5 @@ The prototypes are kept as the learning material, including the Python related t
 
 [Part 04](tutorials/AttachingSerialCamera.md) - Attaching the Serial Camera to Read QR-Code
 
+[Part 05](tutorials/AttachingLEDIndicator.md) - Attaching the LED Indicator
+
