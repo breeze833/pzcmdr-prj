@@ -1,5 +1,6 @@
 from pydispatch import dispatcher
 import logging
+logger = logging.getLogger('pzcmdr')
 import asyncio
 import functools
 
@@ -34,13 +35,13 @@ class CmdExec:
             if cmd:
                 await asyncio.get_event_loop().run_in_executor(None, functools.partial(exec, cmd))
         except asyncio.CancelledError:
-            logging.debug(' command executor stopped')
+            logger.debug(' command executor stopped')
             raise
         except KeyError:
-            logging.warning('Command not found')
+            logger.warning('Command not found')
         except:
-            logging.warning('Command {cmd_id} execution error'.format(cmd_id=cmd_id))
-            logging.debug('Command {cmd_id} execution error'.format(cmd_id=cmd_id), exc_info=True)
+            logger.warning('Command {cmd_id} execution error'.format(cmd_id=cmd_id))
+            logger.debug('Command {cmd_id} execution error'.format(cmd_id=cmd_id), exc_info=True)
 
     def reload(self, commands):
         """
@@ -50,4 +51,4 @@ class CmdExec:
         commands -- The command name to command code lookup table.
         """
         self.commands = commands
-        logging.info(' command list reloaded')
+        logger.info(' command list reloaded')

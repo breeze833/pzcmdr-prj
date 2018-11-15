@@ -1,4 +1,5 @@
 import logging
+logger = logging.getLogger('pzcmdr')
 import asyncio
 import RPi.GPIO as GPIO
 from pydispatch import dispatcher

@@ -1,4 +1,5 @@
 import logging
+logger = logging.getLogger('pzcmdr')
 from pydispatch import dispatcher
 from PIL import Image
 import zbar
@@ -17,6 +18,7 @@ class JPEG2Image:
 
     def decode(self, jpeg_data):
         img = Image.open(io.BytesIO(jpeg_data))
+        #logger.debug('jpeg decoded')
         dispatcher.send('got_image', self, img)
 
 class Image2Gray:
@@ -30,6 +32,7 @@ class Image2Gray:
 
     def convert(self, image_data):
         gray = image_data.convert('L')
+        #logger.debug('convert to gray')
         dispatcher.send('got_gray', self, gray)
 
 class QRCodeScanner:
@@ -54,10 +57,10 @@ class QRCodeScanner:
         gray -- The gray-level Image object.
         """
         result = await asyncio.get_event_loop().run_in_executor(None, self.scanner.scan, np.asarray(gray))
-        #logging.debug('image scanned')
+        #logger.debug('image scanned')
         for sym in result:
             if sym.type=='QR-Code':
-                logging.debug('QR-Code detected')
+                logger.debug('QR-Code detected')
                 dispatcher.send('got_qrcode', self, sym.data)
 
     def scan(self, img_data):

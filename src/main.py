@@ -1,5 +1,6 @@
 from pydispatch import dispatcher
 import logging
+logger = logging.getLogger('pzcmdr')
 import signal
 import os
 import asyncio
@@ -31,7 +32,7 @@ class SysSigHandler:
         loop.add_signal_handler(signal.SIGUSR2, self.toggle_leak_uid)
         loop.add_signal_handler(signal.SIGCHLD, self.child_exit)
     def exit_gracefully(self):
-        logging.debug('cancelling tasks...')
+        logger.debug('cancelling tasks...')
         [task.cancel() for task in asyncio.Task.all_tasks()]
         asyncio.get_event_loop().stop()
     def reload(self):
@@ -43,7 +44,7 @@ class SysSigHandler:
     def toggle_leak_uid(self):
         dispatcher.send("toggle_leak_uid")
     def child_exit(self):
-        logging.debug('child process exit')
+        logger.debug('child process exit')
         os.waitpid(0, 0)
 
 def load_lookup_tables(iddb_file, cmds_file):
@@ -71,7 +72,7 @@ def main(log_level=logging.INFO):
         pass
     finally:
         lookup_tables = load_lookup_tables(iddb_file, cmds_file)
-        logging.info('ID file is {idfile} and CMD file is {cmdfile}'.format(idfile=iddb_file, cmdfile=cmds_file))
+        logger.info('ID file is {idfile} and CMD file is {cmdfile}'.format(idfile=iddb_file, cmdfile=cmds_file))
 
     loop = asyncio.get_event_loop()
 
@@ -93,7 +94,7 @@ def main(log_level=logging.INFO):
     try:
         loop.run_forever()
     finally:
-        logging.debug('waiting for all tasks done...')
+        logger.debug('waiting for all tasks done...')
         loop.run_until_complete(asyncio.gather(*asyncio.Task.all_tasks(), return_exceptions=True))
         loop.close()
 

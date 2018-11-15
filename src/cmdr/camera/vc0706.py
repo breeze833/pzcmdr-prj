@@ -1,4 +1,5 @@
 import logging
+logger = logging.getLogger('pzcmdr')
 import serial
 import serial_asyncio
 import asyncio
@@ -38,9 +39,9 @@ class VC0706:
         self.is_running = False
         self.reset()
         if self.set_speed():
-            logging.info('baudrate changed to {baudrate}'.format(baudrate=self.baud))
+            logger.info('baudrate changed to {baudrate}'.format(baudrate=self.baud))
         else:
-            logging.warning('baudrate change failed')
+            logger.warning('baudrate change failed')
         dispatcher.connect(self.start_capture, signal='start')
         dispatcher.connect(self.stop_capture, signal='stop')
 
@@ -61,7 +62,7 @@ class VC0706:
         We assume that the camera is initially at 38400.
         """
         self.serial = serial.Serial(self.port)
-        logging.debug('assuming current baudrate=38400, configuring to {baud}'.format(baud=self.baud))
+        logger.debug('assuming current baudrate=38400, configuring to {baud}'.format(baud=self.baud))
         self.serial.baudrate = 38400
         baudrate_cmd = baudrate_cmd_prefix + baudrate_cmd_code[self.baud]
         self.serial.write(baudrate_cmd)
@@ -150,7 +151,7 @@ class VC0706:
                         dispatcher.send('captured_jpeg', self, data)
                 is_resumed = await self.resume()
                 while not is_resumed:
-                    logging.warning('resuming camera failed')
+                    logger.warning('resuming camera failed')
                     await asyncio.sleep(1)
                     is_resumed = await self.resume()
                 await asyncio.sleep(interval)
@@ -169,7 +170,7 @@ class VC0706:
         Argument:
         interval -- The guard interval in seconds.
         """
-        logging.info('starting camera...')
+        logger.info('starting camera...')
         asyncio.ensure_future(self._start_capture(interval))
 
     def stop_capture(self):
@@ -177,7 +178,7 @@ class VC0706:
         Stop the capturing process and reset the camera.
         """
         if self.is_running:
-            logging.info('stopping camera...')
+            logger.info('stopping camera...')
             self.is_running = False
             del self.reader
             del self.writer

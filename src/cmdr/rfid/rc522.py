@@ -1,6 +1,7 @@
 from pirc522 import RFID
 from pydispatch import dispatcher
 import logging
+logger = logging.getLogger('pzcmdr')
 import asyncio
 
 class RC522:
@@ -22,21 +23,21 @@ class RC522:
         dispatcher.connect(self.stop_reader, signal='stop')
 
     async def read(self):
-        logging.debug("waiting for tag...")
+        logger.debug("waiting for tag...")
         loop = asyncio.get_event_loop()
         await loop.run_in_executor(None, self.rdr.wait_for_tag)
         (error, tag_type) = self.rdr.request()
         if not error:
-            logging.debug("Tag detected")
+            logger.debug("Tag detected")
             (error, uid) = self.rdr.anticoll()
             if not error:
-                #logging.debug("UID: " + str(uid))
+                #logger.debug("UID: " + str(uid))
                 dispatcher.send("got_uid", self, tuple(uid))
-        logging.debug('finish reading...')
+        logger.debug('finish reading...')
 
     async def _start_reader(self):
         try:
-            logging.info("starting RFID reader...")
+            logger.info("starting RFID reader...")
             self.rdr = RFID(speed=500000)
             self.is_running = True
             while self.is_running:
@@ -46,8 +47,8 @@ class RC522:
             self.rdr.irq.set() # This is used for exiting the blocking state of wait_for_tag()
             raise
         except Exception as e:
-            logging.warning('Unexprected exception....')
-            logging.debug(e)
+            logger.warning('Unexprected exception....')
+            logger.debug(e)
         finally:
             self.stop_reader()
 
@@ -56,7 +57,7 @@ class RC522:
 
     def stop_reader(self):
         if self.is_running:
-            logging.info('stopping RFID reader...')
+            logger.info('stopping RFID reader...')
             self.is_running = False
             self.rdr.cleanup()
 

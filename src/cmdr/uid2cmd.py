@@ -1,5 +1,6 @@
 from pydispatch import dispatcher
 import logging
+logger = logging.getLogger('pzcmdr')
 
 class UID2Cmd:
     """
@@ -24,7 +25,7 @@ class UID2Cmd:
             cmd = self.uids[uid][0]
             dispatcher.send("got_cmd", self, cmd)
         except KeyError:
-            logging.warning('UID not found')
+            logger.warning('UID not found')
             dispatcher.send("got_error", self, uid)
 
     def reload(self, uids):
@@ -35,4 +36,4 @@ class UID2Cmd:
         uids -- The lookup table from UID to command.
         """
         self.uids = uids
-        logging.info('UID lookup table reloaded')
+        logger.info('UID lookup table reloaded')

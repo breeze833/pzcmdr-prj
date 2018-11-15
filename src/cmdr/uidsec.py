@@ -1,5 +1,6 @@
 from pydispatch import dispatcher
 import logging
+logger = logging.getLogger('pzcmdr')
 import os
 
 class UIDLogger:
@@ -28,5 +29,5 @@ class UIDLogger:
 
     def toggle_need_leak(self):
         self.need_leak_uid = not self.need_leak_uid
-        logging.debug('Leak UID: '+str(self.need_leak_uid))
+        logger.debug('Leak UID: '+str(self.need_leak_uid))
 

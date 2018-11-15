@@ -1,5 +1,6 @@
 from pydispatch import dispatcher
 import logging
+logger = logging.getLogger('pzcmdr')
 
 class QRCode2Cmd:
     """
@@ -24,7 +25,7 @@ class QRCode2Cmd:
             cmd = self.qrcodes[qrcode][0]
             dispatcher.send("got_cmd", self, cmd)
         except KeyError:
-            logging.warning('QR-Code not found')
+            logger.warning('QR-Code not found')
             dispatcher.send("got_error", self, qrcode)
 
     def reload(self, qrcodes):
@@ -35,4 +36,4 @@ class QRCode2Cmd:
         qrcodes -- The lookup table from qrcode to command.
         """
         self.qrcodes = qrcodes
-        logging.info('QR-Code lookup table reloaded')
+        logger.info('QR-Code lookup table reloaded')
