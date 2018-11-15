@@ -26,4 +26,5 @@ Project Organization
 |       |      |
 |:-----:|:-----|
 |[<img src="http://img.youtube.com/vi/uRMXyu_Jk2A/0.jpg" width="160" height="120" alt="pzcmdr demo">](https://youtu.be/uRMXyu_Jk2A "Short Demonstration of this Project") | Short Demonstration of this Project|
+|[<img src="http://img.youtube.com/vi/fU0DJsSpYJs/0.jpg" width="160" height="120" alt="pzcmdr demo">](https://youtu.be/fU0DJsSpYJs "Demonstration of the Deployed pzcmdr. Location: Computer room of Dept. Innovative Information and Technology, Tamkang University.") | Demonstration of the Deployed pzcmdr.<br/> Location: Computer room of Dept. Innovative Information and Technology, Tamkang University.|
 |[<img src="http://img.youtube.com/vi/OaOHwIhl_y0/0.jpg" width="160" height="120" alt="project intro">](http://www.youtube.com/watch?v=OaOHwIhl_y0 "Introduction of the Project") | Introduction of the Project|
