@@ -72,9 +72,7 @@ class App:
         self.rgb_led = RGB_LED()
         self.cmdexec = CmdExec(lookup_tables['commands'])
 
-    def __init__(self, log_level=logging.INFO):
-        logging.basicConfig(level=log_level)
-
+    def __init__(self):
         self.iddb_file = './config/iddb.py'
         self.cmds_file = './config/cmds.py'
 
@@ -102,6 +100,7 @@ class App:
             loop.close()
 
 if __name__=='__main__':
-    app = App(log_level=logging.__dict__[os.getenv('PZCMDR_LOGLEVEL','INFO')])
+    logging.basicConfig(level=logging.__dict__[os.getenv('PZCMDR_LOGLEVEL','INFO')])
+    app = App()
     app.run()
 
