@@ -123,7 +123,7 @@ Please read the comments in the files to learn how to define a new entry in the 
 If you choose to define your own configuration files without altering the default ones, you may supply the
 file names when starting the application:
 
-    python3 main.py ./config/my_iddb.py ./config/my_cmds.py
+    python3 main.py --iddb ./config/my_iddb.py --cmds ./config/my_cmds.py
     
 
 The application uses the logging facility to produce log. You may modify `main.py` to customize the logging configuration.
