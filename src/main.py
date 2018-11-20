@@ -97,7 +97,7 @@ if __name__=='__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--iddb', help='The ID to command lookup tables', default='./config/iddb.py')
     parser.add_argument('--cmds', help='The command to code lookup table', default='./config/cmds.py')
-    args = parse.parse_args()
+    args = parser.parse_args()
     app = App(args.iddb, args.cmds)
     app.run()
 
