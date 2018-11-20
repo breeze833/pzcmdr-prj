@@ -5,6 +5,7 @@ import signal
 import os
 import asyncio
 import sys
+import argparse
 from cmdr import RC522
 from cmdr import VC0706
 from cmdr import UID2Cmd
@@ -72,18 +73,10 @@ class App:
         self.rgb_led = RGB_LED()
         self.cmdexec = CmdExec(lookup_tables['commands'])
 
-    def __init__(self):
-        self.iddb_file = './config/iddb.py'
-        self.cmds_file = './config/cmds.py'
-
-        lookup_tables = None
-        try:
-            self.iddb_file = sys.argv[1]
-            self.cmds_file = sys.argv[2]
-        except:
-            pass
-        finally:
-            logger.info('ID file is {idfile} and CMD file is {cmdfile}'.format(idfile=self.iddb_file, cmdfile=self.cmds_file))
+    def __init__(self, iddb_file, cmds_file):
+        self.iddb_file = iddb_file
+        self.cmds_file = cmds_file
+        logger.info('ID file is {idfile} and CMD file is {cmdfile}'.format(idfile=self.iddb_file, cmdfile=self.cmds_file))
 
         self.setup_signal_handlers()
         self.setup_processing_components()
@@ -101,6 +94,10 @@ class App:
 
 if __name__=='__main__':
     logging.basicConfig(level=logging.__dict__[os.getenv('PZCMDR_LOGLEVEL','INFO')])
-    app = App()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--iddb', help='The ID to command lookup tables', default='./config/iddb.py')
+    parser.add_argument('--cmds', help='The command to code lookup table', default='./config/cmds.py')
+    args = parse.parse_args()
+    app = App(args.iddb, args.cmds)
     app.run()
 
